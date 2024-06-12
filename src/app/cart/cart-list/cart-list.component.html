@@ -1,0 +1,10 @@
+<div *ngFor="let item of loadedCart">
+  <app-cart-list-item [cartItem]="item"></app-cart-list-item>
+</div>
+
+<div class="card p-3 d-flex justify-content-center" *ngIf="loadedCart.length < 1">
+  <div class="text-center p-5">
+    <p class="fw-semibold">Cart is empty</p>
+    <a class="btn btn-dark w-50" [routerLink]="['/']">Go Shopping</a>
+  </div>
+</div>

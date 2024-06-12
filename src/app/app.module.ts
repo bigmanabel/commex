@@ -14,7 +14,13 @@ import { CategoryListItemComponent } from './home/main/category-list/category-li
 import { ProductListComponent } from './home/main/product-list/product-list.component';
 import { ProductListItemComponent } from './home/main/product-list/product-list-item/product-list-item.component';
 import { provideHttpClient } from '@angular/common/http';
-import { FiltersComponent } from './shared/components/filters/filters.component';
+import { ProductDetailComponent } from './home/main/product-list/product-detail/product-detail.component';
+import { CartListComponent } from './cart/cart-list/cart-list.component';
+import { CartListItemComponent } from './cart/cart-list/cart-list-item/cart-list-item.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
+import { FormsModule } from '@angular/forms';
+import { FiltersComponent } from './home/main/filters/filters.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -29,11 +35,17 @@ import { FiltersComponent } from './shared/components/filters/filters.component'
     CategoryListItemComponent,
     ProductListComponent,
     ProductListItemComponent,
+    ProductDetailComponent,
+    CartListComponent,
+    CartListItemComponent,
+    CheckoutComponent,
     FiltersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    RouterModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

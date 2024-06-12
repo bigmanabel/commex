@@ -9,6 +9,10 @@ export interface Product {
   stockQuantity: number;
   category: Category;
   region: Region;
+  image: {
+    type: string;
+    data: number[];
+  };
   createdAt: Date;
   updatedAt: Date;
 }

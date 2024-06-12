@@ -1,9 +1,13 @@
-<div class="card" style="width: 18rem;">
-  <img src="shirt.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text fw-lighter">{{ product.name.length > 15 ? (product.name | slice : 0 : 25) + '...' : product.name
+<div class="card shadow" style="width: 18rem;">
+  <img src="{{ arrayBufferToBase64(product.image.data) }}" class="card-img-top" alt="...">
+  <div class="card-body bg-dark text-white">
+    <p class="card-text fw-light">{{ product.name.length > 15 ? (product.name | slice : 0 : 32) + '...' : product.name
       }}</p>
-    <div class="card-text d-flex justify-content-between"><span class="fw-semibold">{{ product.price | currency:'GH&cent;':'symbol':'1.0-2' }}</span>
-      <span class="fw-lighter fst-italic"><i class="fa-solid fa-location-dot"></i> {{product.region.name}}</span></div>
+    <div class="card-text d-flex justify-content-between"><span class="fw-semibold">{{ product.price |
+        currency:'GH&cent; ':'symbol':'1.0-2' }}</span>
+      <span class="fw-lighter fst-italic text-secondary">
+        <small><i class="fa-solid fa-location-dot"></i> {{product.region.name}}</small>
+      </span>
+    </div>
   </div>
 </div>

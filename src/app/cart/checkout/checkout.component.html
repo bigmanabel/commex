@@ -1,0 +1,12 @@
+<div class="card p-3" *ngIf="CartItemNumber > 0">
+  <p class="fw-bolder">Cart Summary</p>
+  <div class="clearfix mb-3">
+    <div class="float-start">
+      Subtotal
+    </div>
+    <div class="float-end">
+      {{ subTotal | currency:'GH&cent; ':'symbol':'1.0-2' }}
+    </div>
+  </div>
+  <button class="btn btn-dark">Checkout</button>
+</div>

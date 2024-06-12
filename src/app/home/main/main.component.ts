@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './main.component.css'
 })
 export class MainComponent{
-
+  selectedCategory!: string;
 }

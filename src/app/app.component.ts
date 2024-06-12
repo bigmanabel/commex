@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
+import { Cart } from './shared/models/cart.model';
+import { Product } from './shared/models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'commex';
+
+
 }
