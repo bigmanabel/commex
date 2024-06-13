@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../../shared/models/cart.model';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -15,19 +13,30 @@ export class CartListComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.onFetchCart();
+  }
+
+  onFetchCart() {
     this.cartService.fetchCart().subscribe(cart => {
       this.loadedCart = cart;
     });
   }
 
-  onFetchCart() {
-    this.cartService.fetchCart();
+  onCartItemDeleted(cartItem: Cart) {
+    this.cartService.deleteFromCart(cartItem).subscribe(() => {
+      this.onFetchCart();
+    })
   }
 
-  onAddToCart(cart: Cart) {
-    this.cartService.addToCart(cart);
+  onCartItemAdded(cartItem: Cart) {
+    this.cartService.addToCart(cartItem).subscribe(() => {
+      this.onFetchCart();
+    });
   }
 
-  
-
+  onUpdateQuantity(cartItem: Cart) {
+    this.cartService.updateCart(cartItem).subscribe(() => {
+      this.onFetchCart();
+    });
+  }
 }

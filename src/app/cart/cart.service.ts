@@ -14,21 +14,24 @@ export class CartService {
     return this.http.get<{ statusCode: number, message: string, data: Cart[] }>('http://localhost:3000/cart')
       .pipe(map(
         response => {
-          const responseArray: Cart[] = Array.from(response.data);
+          let responseArray: Cart[] = [];
+          if (response) {
+            responseArray = Array.from(response.data);
+          }
           return responseArray;
         }
     ))
   }
 
-  addToCart(cart: Cart) {
-    this.http.post('http://localhost:3000/cart', cart).subscribe();
+  addToCart(cartItem: Cart) {
+    return this.http.post('http://localhost:3000/cart', cartItem);
   }
 
-  deleteCart(cart: Cart) {
-    this.http.delete('http://localhost:3000/cart/' + cart.id).subscribe({
-      next: () => {
-        this.fetchCart();
-      }
-    });
+  deleteFromCart(cartItem: Cart) {
+    return this.http.delete(`http://localhost:3000/cart/${cartItem.id}`);
+  }
+
+  updateCart(cartItem: Cart) {
+    return this.http.patch(`http://localhost:3000/cart/${cartItem.id}`, {quantity: cartItem.quantity});
   }
 }

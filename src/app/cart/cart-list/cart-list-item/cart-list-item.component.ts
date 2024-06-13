@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cart } from '../../../shared/models/cart.model';
 
 @Component({
@@ -10,6 +8,27 @@ import { Cart } from '../../../shared/models/cart.model';
 })
 export class CartListItemComponent {
   @Input() cartItem!: Cart;
+  @Output() addItemToCart = new EventEmitter<Cart>();
+  @Output() deleteItemFromCart = new EventEmitter<Cart>();
+  @Output() changeItemQuantity = new EventEmitter<Cart>();
+
+  constructor() { }
+
+  onDeleteFromCart() {
+    this.deleteItemFromCart.emit(this.cartItem);
+  }
+
+  onAddtoCart() {
+    this.addItemToCart.emit(this.cartItem);
+  }
+
+  onQuantityIncrease() {
+    this.changeItemQuantity.emit({ ...this.cartItem, quantity: this.cartItem.quantity + 1 });
+  }
+
+  onQuantityDecrease() {
+    this.changeItemQuantity.emit({ ...this.cartItem, quantity: this.cartItem.quantity - 1 });
+  }
 
   arrayBufferToBase64(buffer: number[]): string {
     const binary = buffer.map(byte => String.fromCharCode(byte)).join('');
