@@ -16,10 +16,10 @@
             Remove</button>
           <div class="d-flex justify-content-between">
             <button class="btn btn-dark text-white" (click)="onQuantityDecrease()" [disabled]="cartItem.quantity < 2"><i class="bi bi-dash"></i></button>
-            <div style="width: 40px;" class="mx-2">
+            <div style="width: 45px;" class="mx-2">
               <input type="text" class="form-control rounded text-center" min="1" value="{{ cartItem.quantity }}">
             </div>
-            <button class="btn btn-outline-secondary btn-dark text-white" (click)="onQuantityIncrease()"><i class="bi bi-plus"></i></button>
+            <button class="btn btn-dark text-white" (click)="onQuantityIncrease()" [disabled]="cartItem.product.stockQuantity <= cartItem.quantity"><i class="bi bi-plus"></i></button>
           </div>
         </div>
       </div>

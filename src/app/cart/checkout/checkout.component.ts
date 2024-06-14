@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-checkout',
@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './checkout.component.css'
 })
 export class CheckoutComponent {
-  @Input() CartItemNumber!: number;
   @Input() subTotal!: number;
 }

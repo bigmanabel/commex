@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Region } from '../../../shared/models/region.model';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { RegionService } from '../../../shared/services/region.service';
 
 @Component({
   selector: 'app-filters',
@@ -10,24 +9,21 @@ import { map } from 'rxjs';
 })
 export class FiltersComponent implements OnInit {
   loadedRegions: Region[] = [];
+  @Output() regionSelected = new EventEmitter<void>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private regionService: RegionService) { }
 
   ngOnInit() {
-    this.fetchRegions();
+    this.onFetchRegions();
   }
 
-  private fetchRegions() {
-    this.http.get<{ statusCode: number, message: string, data: Region[] }>('http://localhost:3000/regions')
-      .pipe(map(
-        response => {
-          const responseArray: Region[] = Array.from(response.data);
-          return responseArray;
-        }
-      ))
-      .subscribe(regions => {
-        console.log(regions);
-        this.loadedRegions = regions;
-    })
+  onRegionSelected() {
+    this.regionSelected.emit();
+  }
+
+  onFetchRegions() {
+    this.regionService.fetchRegions().subscribe(regions => {
+      this.loadedRegions = regions;
+    });
   }
 }

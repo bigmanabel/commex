@@ -1,6 +1,7 @@
 <div *ngFor="let item of loadedCart">
-  <app-cart-list-item [cartItem]="item" (addItemToCart)="onCartItemAdded($event)"
-    (deleteItemFromCart)="onCartItemDeleted($event)" (changeItemQuantity)="onUpdateQuantity($event)"></app-cart-list-item>
+  <app-cart-list-item [cartItem]="item" (deleteItemFromCart)="onCartItemDeleted(item)"
+    (increaseItemQuantity)="onItemQuantityIncreased(item)"
+    (decreaseItemQuantity)="onItemQuantityDecreased(item)"></app-cart-list-item>
 </div>
 
 <div class="card p-3 d-flex justify-content-center" *ngIf="loadedCart.length < 1">

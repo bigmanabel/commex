@@ -1,19 +1,8 @@
 <div class="row py-3 align-items-center">
   <div class="col-md-8 offset-md-2 d-flex align-items-center">
     <p class="fw-light me-3 mb-0">Filters ></p>
-    <p class="fw-light me-2 mb-0">Price: </p>
-    <div class="d-flex align-items-center">
-      <input type="text" class="form-control form-control-sm me-1" placeholder="min" style="width: 45px;">
-      <span class="mx-1">-</span>
-      <input type="text" class="form-control form-control-sm ms-1" placeholder="max" style="width: 45px;">
-    </div>
+    <app-price-filter></app-price-filter>
     <span class="mx-3">|</span>
-    <p class="fw-light me-2 mb-0">Region: </p>
-    <div>
-      <select class="form-select form-select-sm">
-        <option selected disabled>Select Region...</option>
-        <option *ngFor="let region of loadedRegions" [value]="region.name">{{ region.name }}</option>
-      </select>
-    </div>
+    <app-region-filter [loadedRegions]="loadedRegions"></app-region-filter>
   </div>
 </div>

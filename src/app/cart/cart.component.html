@@ -1,12 +1,13 @@
 <div class="container min-vh-100">
   <div class="row py-4">
-    <div class="col-md-9">
+    <div [ngClass]="{ 'col-md-9': loadedCart.length >= 1, 'col-md-12': loadedCart.length < 1 }">
       <p class="fw-lighter">Cart</p>
-      <app-cart-list></app-cart-list>
+      <app-cart-list [loadedCart]="loadedCart" (itemWasDeletedFromCart)="deleteItemFromCart(selectedCartItem = $event)"
+        (cartWasUpdated)="updateCart(selectedCartItem = $event)"></app-cart-list>
     </div>
-    <div class="col-md-3" *ngIf="loadedCart.length > 0">
+    <div class="col-md-3" *ngIf="loadedCart.length >= 1">
       <p class="fw-lighter">Checkout</p>
-      <app-checkout [CartItemNumber]="loadedCart.length" [subTotal]="subTotal"></app-checkout>
+      <app-checkout [subTotal]="subTotal"></app-checkout>
     </div>
   </div>
 </div>

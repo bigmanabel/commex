@@ -1,0 +1,9 @@
+<div class="d-flex align-items-center">
+  <p class="fw-light me-2 mb-0">Region: </p>
+  <div>
+    <select class="form-select form-select-sm" (change)="onRegionSelected()">
+      <option selected disabled>Select Region</option>
+      <option *ngFor="let region of loadedRegions" [value]="region.name">{{ region.name }}</option>
+    </select>
+  </div>
+</div>

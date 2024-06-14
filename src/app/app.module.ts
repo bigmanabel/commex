@@ -21,6 +21,8 @@ import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from './home/main/filters/filters.component';
 import { RouterModule } from '@angular/router';
+import { RegionFilterComponent } from './home/main/filters/region-filter/region-filter.component';
+import { PriceFilterComponent } from './home/main/filters/price-filter/price-filter.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { RouterModule } from '@angular/router';
     CartListComponent,
     CartListItemComponent,
     CheckoutComponent,
-    FiltersComponent
+    FiltersComponent,
+    RegionFilterComponent,
+    PriceFilterComponent,
   ],
   imports: [
     BrowserModule,

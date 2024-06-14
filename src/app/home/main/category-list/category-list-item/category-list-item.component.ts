@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../../../shared/models/category.model';
 
 @Component({
@@ -8,4 +8,6 @@ import { Category } from '../../../../shared/models/category.model';
 })
 export class CategoryListItemComponent {
   @Input() category!: Category;
+
+
 }
