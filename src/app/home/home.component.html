@@ -1,2 +1,2 @@
 <app-search></app-search>
-<app-main [loadedCategories]="loadedCategories" [loadedProducts]="loadedProducts"></app-main>
+<app-main [loadedCategories]="loadedCategories" [loadedProducts]="loadedProducts" [loadedRegions]="loadedRegions" (regionWasSelected)="filterProductsByRegion($event)"></app-main>

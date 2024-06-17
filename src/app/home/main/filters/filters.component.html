@@ -3,6 +3,6 @@
     <p class="fw-light me-3 mb-0">Filters ></p>
     <app-price-filter></app-price-filter>
     <span class="mx-3">|</span>
-    <app-region-filter [loadedRegions]="loadedRegions"></app-region-filter>
+    <app-region-filter [loadedRegions]="loadedRegions" (regionSelected)="onRegionSelected($event)"></app-region-filter>
   </div>
 </div>

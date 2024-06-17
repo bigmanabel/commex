@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ProductService } from '../shared/services/product.service';
 import { Category } from '../shared/models/category.model';
 import { Product } from '../shared/models/product.model';
 import { CategoryService } from '../shared/services/category.service';
+import { Region } from '../shared/models/region.model';
+import { RegionService } from '../shared/services/region.service';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +14,11 @@ import { CategoryService } from '../shared/services/category.service';
 export class HomeComponent implements OnInit {
   loadedCategories: Category[] = [];
   loadedProducts: Product[] = [];
+  loadedRegions: Region[] = [];
 
-  constructor(private productService: ProductService, private categoryService: CategoryService) { }
+  selectedRegion!: string;
+
+  constructor(private productService: ProductService, private categoryService: CategoryService, private regionService: RegionService) { }
 
   ngOnInit() {
     this.onFetch();
@@ -25,6 +30,17 @@ export class HomeComponent implements OnInit {
     });
 
     this.productService.fetchProducts().subscribe(products => {
+      this.loadedProducts = products;
+    });
+
+    this.regionService.fetchRegions().subscribe(regions => {
+      this.loadedRegions = regions;
+    });
+  }
+
+  filterProductsByRegion(region: string) {
+    this.selectedRegion = region;
+    this.productService.fetchProductsByRegion(region).subscribe(products => {
       this.loadedProducts = products;
     });
   }

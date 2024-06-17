@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category } from '../../shared/models/category.model';
 import { Product } from '../../shared/models/product.model';
+import { Region } from '../../shared/models/region.model';
 
 @Component({
   selector: 'app-main',
@@ -10,9 +11,13 @@ import { Product } from '../../shared/models/product.model';
 export class MainComponent {
   @Input() loadedCategories!: Category[];
   @Input() loadedProducts!: Product[];
-  @Output() regionWasSelected = new EventEmitter<void>();
+  @Input() loadedRegions!: Region[];
+  @Output() regionWasSelected = new EventEmitter<string>();
 
-  onRegionSelected() {
+  selectedRegion!: string;
 
+  onRegionWasSelected(region: string) {
+    this.selectedRegion = region;
+    this.regionWasSelected.emit(this.selectedRegion);
   }
 }

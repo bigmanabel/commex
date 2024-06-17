@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Region } from '../../../../shared/models/region.model';
 
 @Component({
@@ -6,10 +6,18 @@ import { Region } from '../../../../shared/models/region.model';
   templateUrl: './region-filter.component.html',
   styleUrl: './region-filter.component.css'
 })
-export class RegionFilterComponent {
+export class RegionFilterComponent implements OnInit {
   @Input() loadedRegions!: Region[];
+  @Output() regionSelected = new EventEmitter<string>();
+
+  selectedRegion!: string;
+
+  ngOnInit(): void {
+    this.selectedRegion = '';
+  }
 
   onRegionSelected() {
-    console.log('changed')
+    this.regionSelected.emit(this.selectedRegion);
   }
+
 }
