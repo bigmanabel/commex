@@ -1,8 +1,8 @@
 <div class="d-flex align-items-center">
   <p class="fw-light me-2 mb-0">Price: </p>
   <div class="d-flex align-items-center">
-    <input type="text" class="form-control form-control-sm me-1" placeholder="min" style="width: 45px;">
+    <input type="number" class="form-control form-control-sm me-1 text-center" placeholder="min" [(ngModel)]="min" (input)="setPriceRange()" style="width: 45px;">
     <span class="mx-1"> - </span>
-    <input type="text" class="form-control form-control-sm ms-1" placeholder="max" style="width: 45px;">
+    <input type="number" class="form-control form-control-sm ms-1 text-center" placeholder="max" [(ngModel)]="max" (input)="setPriceRange()" style="width: 45px;">
   </div>
 </div>
