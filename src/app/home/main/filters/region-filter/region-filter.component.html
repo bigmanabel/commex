@@ -2,7 +2,7 @@
   <p class="fw-light me-2 mb-0">Region: </p>
   <div>
     <select class="form-select form-select-sm" [(ngModel)]="selectedRegion" (change)="onRegionSelected()">
-      <option [ngValue]="0" selected>Select Region</option>
+      <option [ngValue]="null" disabled selected>Select Region</option>
       <option *ngFor="let region of loadedRegions" [value]="region.id">{{ region.name }}</option>
     </select>
   </div>

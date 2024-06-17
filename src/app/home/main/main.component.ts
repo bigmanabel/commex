@@ -12,12 +12,12 @@ export class MainComponent {
   @Input() loadedCategories!: Category[];
   @Input() loadedProducts!: Product[];
   @Input() loadedRegions!: Region[];
-  @Output() regionWasSelected = new EventEmitter<string>();
+  @Output() regionWasSelected = new EventEmitter<number>();
 
-  selectedRegion!: string;
+  selectedRegion!: number;
 
-  onRegionWasSelected(region: string) {
+  onRegionWasSelected(region: number) {
     this.selectedRegion = region;
-    this.regionWasSelected.emit(this.selectedRegion);
+    this.regionWasSelected.emit(+this.selectedRegion);
   }
 }

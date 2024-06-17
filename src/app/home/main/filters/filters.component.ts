@@ -8,12 +8,12 @@ import { Region } from '../../../shared/models/region.model';
 })
 export class FiltersComponent {
   @Input() loadedRegions!: Region[];
-  selectedRegion!: string;
-  @Output() regionWasSelected = new EventEmitter<string>();
+  selectedRegion!: number;
+  @Output() regionWasSelected = new EventEmitter<number>();
 
-  onRegionSelected(region: string) {
+  onRegionSelected(region: number) {
     this.selectedRegion = region;
-    this.regionWasSelected.emit(this.selectedRegion);
+    this.regionWasSelected.emit(+this.selectedRegion);
   }
 
 }

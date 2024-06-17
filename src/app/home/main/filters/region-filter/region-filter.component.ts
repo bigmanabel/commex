@@ -8,16 +8,16 @@ import { Region } from '../../../../shared/models/region.model';
 })
 export class RegionFilterComponent implements OnInit {
   @Input() loadedRegions!: Region[];
-  @Output() regionSelected = new EventEmitter<string>();
+  @Output() regionSelected = new EventEmitter<number>();
 
-  selectedRegion!: string;
+  selectedRegion!: number | null;
 
   ngOnInit(): void {
-    this.selectedRegion = '';
+    this.selectedRegion = null;
   }
 
   onRegionSelected() {
-    this.regionSelected.emit(this.selectedRegion);
+    this.regionSelected.emit(+this.selectedRegion!);
   }
 
 }

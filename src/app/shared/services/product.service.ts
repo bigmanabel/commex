@@ -21,8 +21,8 @@ export class ProductService {
       ))
   }
 
-  fetchProductsByRegion(region: string) {
-    return this.http.get<{ statusCode: number, message: string, data: Product[] }>('http://localhost:3000/products?region=' + +region)
+  fetchProductsByRegion(region: number) {
+    return this.http.get<{ statusCode: number, message: string, data: Product[] }>('http://localhost:3000/products?region=' + region)
       .pipe(map(
         response => {
           const responseArray: Product[] = Array.from(response.data);
