@@ -11,7 +11,7 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   fetchCategories() {
-    return this.http.get<{ statusCode: number, message: string, data: Category[] }>('http://localhost:3000/categories')
+    return this.http.get<{ statusCode: number, message: string, data: Category[] }>('https://commex-api.onrender.com/categories')
       .pipe(map(
         response => {
           const responseArray: Category[] = Array.from(response.data);

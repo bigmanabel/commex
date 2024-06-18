@@ -11,7 +11,7 @@ export class RegionService {
   constructor(private http: HttpClient) { }
 
   fetchRegions() {
-    return this.http.get<{ statusCode: number, message: string, data: Region[] }>('http://localhost:3000/regions')
+    return this.http.get<{ statusCode: number, message: string, data: Region[] }>('https://commex-api.onrender.com/regions')
       .pipe(map(
         response => {
           const responseArray: Region[] = Array.from(response.data);

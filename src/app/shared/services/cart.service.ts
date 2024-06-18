@@ -11,7 +11,7 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   fetchCart() {
-    return this.http.get<{ statusCode: number, message: string, data: Cart[] }>('http://localhost:3000/cart')
+    return this.http.get<{ statusCode: number, message: string, data: Cart[] }>('https://commex-api.onrender.com/cart')
       .pipe(map(
         response => {
             const responseArray = Array.from(response ? response.data : []);
@@ -21,14 +21,14 @@ export class CartService {
   }
 
   addToCart(cartItem: {product: number, quantity: number}) {
-    return this.http.post('http://localhost:3000/cart', cartItem);
+    return this.http.post('https://commex-api.onrender.com/cart', cartItem);
   }
 
   deleteFromCart(cartItem: Cart) {
-    return this.http.delete(`http://localhost:3000/cart/${cartItem.id}`);
+    return this.http.delete(`https://commex-api.onrender.com/cart/${cartItem.id}`);
   }
 
   updateCart(cartItem: Cart) {
-    return this.http.patch(`http://localhost:3000/cart/${cartItem.id}`, { quantity: cartItem.quantity });
+    return this.http.patch(`https://commex-api.onrender.com/cart/${cartItem.id}`, { quantity: cartItem.quantity });
   }
 }

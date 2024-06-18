@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   fetchProducts() {
-    return this.http.get<{ statusCode: number, message: string, data: Product[] }>('http://localhost:3000/products')
+    return this.http.get<{ statusCode: number, message: string, data: Product[] }>('https://commex-api.onrender.com/products')
       .pipe(map(
         response => {
           const responseArray: Product[] = Array.from(response ? response.data : []);
@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   fetchProductById(id: string) {
-    return this.http.get<{ statusCode: number, message: string, data: Product }>(`http://localhost:3000/products/${id}`)
+    return this.http.get<{ statusCode: number, message: string, data: Product }>(`https://commex-api.onrender.com/products/${id}`)
       .pipe(map(
         response => {
           const responseObject: Product = response.data;
@@ -31,7 +31,7 @@ export class ProductService {
   }
 
   filterProducts(filters: { region: string, category: string, price: { min: string, max: string } }) {
-    return this.http.get<{ statusCode: number, message: string, data: Product[] }>(`http://localhost:3000/products?region=${filters.region}&category=${filters.category}&min=${filters.price.min}&max=${filters.price.max}`)
+    return this.http.get<{ statusCode: number, message: string, data: Product[] }>(`https://commex-api.onrender.com/products?region=${filters.region}&category=${filters.category}&min=${filters.price.min}&max=${filters.price.max}`)
       .pipe(map(
         response => {
           const responseArray: Product[] = Array.from(response ? response.data : []);
