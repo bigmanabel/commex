@@ -1,5 +1,5 @@
-<div class="row gx-1 gy-4">
-  <div class="col" *ngFor="let product of loadedProducts">
+<div class="row d-flex gy-4">
+  <div class="col-3" *ngFor="let product of loadedProducts">
     <app-product-list-item [product]="product"></app-product-list-item>
   </div>
 </div>
