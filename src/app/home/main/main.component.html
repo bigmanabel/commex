@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="container-fluid">
-    <app-filters [loadedRegions]="loadedRegions" (regionWasSelected)="onRegionWasSelected($event)" ></app-filters>
+    <app-filters [loadedRegions]="loadedRegions" [loadedCategories]="loadedCategories" (setFilters)="onSetFilters($event)"></app-filters>
     <div class="row">
       <div class="col-md-2">
-        <p class="fw-lighter">Categories</p>
+        <p class="fw-lighter">{{ loadedCategories.length < 1 ? 'No categories': 'Categories' }}</p>
         <app-category-list [loadedCategories]="loadedCategories"></app-category-list>
       </div>
       <div class="col-md-10">
-        <p class="fw-lighter">All Products</p>
+        <p class="fw-lighter">{{ loadedProducts.length < 1 ? 'No matching products found.': 'All Products' }}</p>
         <app-product-list [loadedProducts]="loadedProducts"></app-product-list>
       </div>
     </div>

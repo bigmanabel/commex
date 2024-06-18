@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Region } from '../../../shared/models/region.model';
+import { Category } from '../../../shared/models/category.model';
 
 @Component({
   selector: 'app-filters',
@@ -8,13 +9,31 @@ import { Region } from '../../../shared/models/region.model';
 })
 export class FiltersComponent {
   @Input() loadedRegions!: Region[];
-  selectedRegion!: number;
-  @Output() regionWasSelected = new EventEmitter<number>();
+  @Input() loadedCategories!: Category[];
+  @Output() setFilters = new EventEmitter<{ region: string, category: string, price: { min: string, max: string } }>();
 
-  onRegionSelected(region: number) {
-    this.selectedRegion = region;
-    this.regionWasSelected.emit(+this.selectedRegion);
+  clearAllFilters: boolean = false;
+  selectedRegion: string = '';
+  selectedCategory: string = '';
+  selectedPriceRange: { min: string, max: string } = { min: '', max: '' };
+
+  onSetFilters() {
+    this.setFilters.emit({
+      region: this.selectedRegion !== undefined ? this.selectedRegion : '',
+      category: this.selectedCategory !== undefined ? this.selectedCategory : '',
+      price: this.selectedPriceRange !== undefined ? this.selectedPriceRange : { min: '', max: '' }
+    })
   }
 
+  onClearFilters() {
+    this.clearAllFilters = true;
+  }
+
+  isAnyFilterSet(): boolean {
+    return this.selectedRegion !== '' ||
+      this.selectedCategory !== '' ||
+      this.selectedPriceRange.min !== '' ||
+      this.selectedPriceRange.max !== '';
+  }
 }
 

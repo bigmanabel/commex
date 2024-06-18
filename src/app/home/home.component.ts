@@ -16,8 +16,6 @@ export class HomeComponent implements OnInit {
   loadedProducts: Product[] = [];
   loadedRegions: Region[] = [];
 
-  selectedRegion!: number;
-
   constructor(private productService: ProductService, private categoryService: CategoryService, private regionService: RegionService) { }
 
   ngOnInit() {
@@ -38,9 +36,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  filterProductsByRegion(region: number) {
-    this.selectedRegion = region;
-    this.productService.fetchProductsByRegion(region).subscribe(products => {
+  filterProducts(filters: { region: string, category: string, price: { min: string, max: string } }) {
+    this.productService.filterProducts(filters).subscribe(products => {
       this.loadedProducts = products;
     });
   }

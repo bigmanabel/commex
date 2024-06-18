@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Region } from '../../../../shared/models/region.model';
 
 @Component({
@@ -6,18 +6,26 @@ import { Region } from '../../../../shared/models/region.model';
   templateUrl: './region-filter.component.html',
   styleUrl: './region-filter.component.css'
 })
-export class RegionFilterComponent implements OnInit {
+export class RegionFilterComponent implements OnChanges {
   @Input() loadedRegions!: Region[];
-  @Output() regionSelected = new EventEmitter<number>();
+  @Input() clearAllFilters: boolean = false;
+  @Output() regionSelected = new EventEmitter<string>();
 
-  selectedRegion!: number | null;
+  selectedRegion: string | null = null;
 
-  ngOnInit(): void {
-    this.selectedRegion = null;
-  }
 
   onRegionSelected() {
-    this.regionSelected.emit(+this.selectedRegion!);
+    this.regionSelected.emit(this.selectedRegion!);
   }
 
+  clearSelectedRegion() {
+    this.selectedRegion = null;
+    this.regionSelected.emit('');
+  }
+
+  ngOnChanges() {
+    if (this.clearAllFilters) {
+      this.clearSelectedRegion()
+    }
+  }
 }

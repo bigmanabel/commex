@@ -12,12 +12,21 @@ export class MainComponent {
   @Input() loadedCategories!: Category[];
   @Input() loadedProducts!: Product[];
   @Input() loadedRegions!: Region[];
-  @Output() regionWasSelected = new EventEmitter<number>();
+  @Output() setFilters = new EventEmitter<{region: string, category: string, price: {min: string, max: string}}>();
 
-  selectedRegion!: number;
+  selectedRegion!: string;
+  selectedCategory!: string;
+  seletedPriceRange!: { min: string, max: string };
 
-  onRegionWasSelected(region: number) {
-    this.selectedRegion = region;
-    this.regionWasSelected.emit(+this.selectedRegion);
+  onSetFilters(filters: { region: string, category: string, price: { min: string, max: string } } ) {
+    this.selectedRegion = filters.region;
+    this.selectedCategory = filters.category;
+    this.seletedPriceRange = filters.price;
+
+    this.setFilters.emit({
+      region: this.selectedRegion,
+      category: this.selectedCategory,
+      price: this.seletedPriceRange
+    });
   }
 }

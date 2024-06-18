@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { map } from 'rxjs';
-import { Region } from '../models/region.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +14,17 @@ export class ProductService {
     return this.http.get<{ statusCode: number, message: string, data: Product[] }>('http://localhost:3000/products')
       .pipe(map(
         response => {
-          const responseArray: Product[] = Array.from(response.data);
+          const responseArray: Product[] = Array.from(response ? response.data : []);
           return responseArray;
         }
       ))
   }
 
-  fetchProductsByRegion(region: number) {
-    return this.http.get<{ statusCode: number, message: string, data: Product[] }>('http://localhost:3000/products?region=' + region)
+  filterProducts(filters: { region: string, category: string, price: { min: string, max: string } }) {
+    return this.http.get<{ statusCode: number, message: string, data: Product[] }>(`http://localhost:3000/products?region=${filters.region}&category=${filters.category}&min=${filters.price.min}&max=${filters.price.max}`)
       .pipe(map(
         response => {
-          const responseArray: Product[] = Array.from(response.data);
+          const responseArray: Product[] = Array.from(response ? response.data : []);
           return responseArray;
         }
       ))

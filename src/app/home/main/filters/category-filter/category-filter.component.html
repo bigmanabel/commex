@@ -1,0 +1,10 @@
+<div class="d-flex align-items-center">
+  <p class="fw-light me-2 mb-0">Category: </p>
+  <div>
+    <select class="form-select form-select-sm" [(ngModel)]="selectedCategory" (change)="onCategorySelected()">
+      <option [ngValue]="null" disabled selected>Select Categories</option>
+      <option *ngFor="let category of loadedCategories" [value]="category.id">{{ category.name }}</option>
+    </select>
+  </div>
+  <button class="btn border border-0 ms-3 p-0" *ngIf="selectedCategory" (click)="clearSelectedCategory()"><i class="bi bi-x"></i></button>
+</div>
