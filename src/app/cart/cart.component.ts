@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cart } from '../shared/models/cart.model';
 import { HttpClient } from '@angular/common/http';
 import { CartService } from '../shared/services/cart.service';
+import { EventService } from '../shared/services/event.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   selectedCartItem!: Cart;
   subTotal: number = 0;
 
-  constructor(private http: HttpClient, private cartService: CartService) { }
+  constructor(private http: HttpClient, private cartService: CartService, private eventService: EventService) { }
 
   ngOnInit() {
     this.onFetchCart();
@@ -32,6 +33,7 @@ export class CartComponent implements OnInit {
   deleteItemFromCart(cartItem: Cart) {
     this.cartService.deleteFromCart(cartItem).subscribe(() => {
       this.onFetchCart();
+      this.eventService.onUpdateCartLength();
     })
   }
 
