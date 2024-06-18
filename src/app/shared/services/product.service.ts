@@ -20,6 +20,16 @@ export class ProductService {
       ))
   }
 
+  fetchProductById(id: string) {
+    return this.http.get<{ statusCode: number, message: string, data: Product }>(`http://localhost:3000/products/${id}`)
+      .pipe(map(
+        response => {
+          const responseObject: Product = response.data;
+          return responseObject;
+        }
+      ));
+  }
+
   filterProducts(filters: { region: string, category: string, price: { min: string, max: string } }) {
     return this.http.get<{ statusCode: number, message: string, data: Product[] }>(`http://localhost:3000/products?region=${filters.region}&category=${filters.category}&min=${filters.price.min}&max=${filters.price.max}`)
       .pipe(map(

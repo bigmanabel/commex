@@ -1,1 +1,41 @@
-<p>product-detail works!</p>
+<div class="container vh-100" *ngIf="product">
+  <p class="fw-lighter mt-3"><a [routerLink]="['/']" class="text-decoration-none text-body-tertiary">All
+      Products</a><span class="mx-2">></span>{{ product.category.name }}</p>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="{{ arrayBufferToBase64(product.image.data) }}" alt="{{product.name}}" class="img-thumbnail">
+        </div>
+        <div class="col-md-9">
+          <div>
+            <p><span class="fw-light fs-3">{{ product.name }}</span><br>
+              <span class="fw-lighter mt-3">{{ product.stockQuantity > 1 ? product.stockQuantity + ' in stock': 'Out of
+                stock' }}</span>
+            </p>
+            <p class="fw-semibold fs-3">{{ product.price | currency:'GH&cent; ':'symbol':'1.0-2' }}</p>
+          </div>
+          <button class="btn btn-dark btn-lg w-100" *ngIf="!itemIsInCart" (click)="onAddToCart()">ADD TO CART</button>
+            <div class="d-flex align-items-center" *ngIf="itemIsInCart">
+              <button class="btn btn-dark text-white" (click)="onQuantityDecrease()"><i
+                  class="bi bi-dash"></i></button>
+              <div style="width: 45px;" class="mx-2">
+                <input type="text" class="form-control rounded text-center" min="1" value="{{ cartItem.quantity }}">
+              </div>
+              <button class="btn btn-dark text-white" (click)="onQuantityIncrease()"
+                [disabled]="cartItem.product.stockQuantity <= cartItem.quantity"><i class="bi bi-plus"></i></button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-2 list-group">
+    <p class="fw-light fs-5 list-group-item">Description</p>
+    <div class="card-body list-group-item">
+      <p class="fw-lighter">{{ product.description }}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="!product">
+  <p>Loading product details...</p>
+</div>

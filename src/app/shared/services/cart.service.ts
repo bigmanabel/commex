@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cart } from '../shared/models/cart.model';
+import { Cart } from '../models/cart.model';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -14,16 +14,13 @@ export class CartService {
     return this.http.get<{ statusCode: number, message: string, data: Cart[] }>('http://localhost:3000/cart')
       .pipe(map(
         response => {
-          let responseArray: Cart[] = [];
-          if (response) {
-            responseArray = Array.from(response.data);
-          }
+            const responseArray = Array.from(response ? response.data : []);
           return responseArray;
         }
-    ))
+      ))
   }
 
-  addToCart(cartItem: Cart) {
+  addToCart(cartItem: {product: number, quantity: number}) {
     return this.http.post('http://localhost:3000/cart', cartItem);
   }
 
@@ -32,6 +29,6 @@ export class CartService {
   }
 
   updateCart(cartItem: Cart) {
-    return this.http.patch(`http://localhost:3000/cart/${cartItem.id}`, {quantity: cartItem.quantity});
+    return this.http.patch(`http://localhost:3000/cart/${cartItem.id}`, { quantity: cartItem.quantity });
   }
 }

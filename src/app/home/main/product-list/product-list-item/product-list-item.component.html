@@ -1,13 +1,16 @@
-<div class="card shadow" style="width: 18rem;">
-  <img src="{{ arrayBufferToBase64(product.image.data) }}" class="card-img-top" alt="...">
-  <div class="card-body bg-dark text-white">
-    <p class="card-text fw-light">{{ product.name.length > 15 ? (product.name | slice : 0 : 32) + '...' : product.name
-      }}</p>
-    <div class="card-text d-flex justify-content-between"><span class="fw-semibold">{{ product.price |
-        currency:'GH&cent; ':'symbol':'1.0-2' }}</span>
-      <span class="fw-lighter fst-italic text-secondary">
-        <small><i class="fa-solid fa-location-dot"></i> {{product.region.name}}</small>
-      </span>
+<a [routerLink]="['/products', product.id]" class="text-decoration-none">
+  <div class="card shadow" style="width: 18rem;">
+    <img src="{{ arrayBufferToBase64(product.image.data) }}" class="card-img-top" alt="...">
+    <div class="card-body bg-dark text-white">
+      <p class="card-text fw-light">{{ product.name.length > 15 ? (product.name | slice : 0 : 32) + '...' : product.name
+        }}</p>
+      <div class="card-text d-flex justify-content-between"><span class="fw-semibold">{{ product.price |
+          currency:'GH&cent; ':'symbol':'1.0-2' }}</span>
+        <span class="fw-lighter fst-italic text-secondary">
+          <small><i class="fa-solid fa-location-dot"></i> {{product.region.name}}</small>
+        </span>
+      </div>
     </div>
   </div>
-</div>
+
+</a>
