@@ -10,6 +10,7 @@ export class CategoryFilterComponent implements OnChanges{
   @Input() loadedCategories!: Category[];
   @Input() clearAllFilters: boolean = false;
   @Output() categorySelected = new EventEmitter<string>();
+  @Output() filtersCleared = new EventEmitter<void>();
 
   selectedCategory: string | null = null;
 

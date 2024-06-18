@@ -11,6 +11,7 @@ export class FiltersComponent {
   @Input() loadedRegions!: Region[];
   @Input() loadedCategories!: Category[];
   @Output() setFilters = new EventEmitter<{ region: string, category: string, price: { min: string, max: string } }>();
+  @Output() clearFilters = new EventEmitter<void>();
 
   clearAllFilters: boolean = false;
   selectedRegion: string = '';
@@ -27,6 +28,7 @@ export class FiltersComponent {
 
   onClearFilters() {
     this.clearAllFilters = true;
+    this.clearFilters.emit();
   }
 
   isAnyFilterSet(): boolean {

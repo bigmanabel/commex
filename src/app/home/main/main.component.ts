@@ -12,7 +12,8 @@ export class MainComponent {
   @Input() loadedCategories!: Category[];
   @Input() loadedProducts!: Product[];
   @Input() loadedRegions!: Region[];
-  @Output() setFilters = new EventEmitter<{region: string, category: string, price: {min: string, max: string}}>();
+  @Output() setFilters = new EventEmitter<{ region: string, category: string, price: { min: string, max: string } }>();
+  @Output() clearFilters = new EventEmitter<void>();
 
   selectedRegion!: string;
   selectedCategory!: string;
@@ -28,5 +29,9 @@ export class MainComponent {
       category: this.selectedCategory,
       price: this.seletedPriceRange
     });
+  }
+
+  onClearFilters() {
+    this.clearFilters.emit();
   }
 }

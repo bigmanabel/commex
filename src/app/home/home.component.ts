@@ -41,4 +41,8 @@ export class HomeComponent implements OnInit {
       this.loadedProducts = products;
     });
   }
+
+  clearFilters() {
+    this.onFetch();
+  }
 }

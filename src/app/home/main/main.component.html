@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="container-fluid">
-    <app-filters [loadedRegions]="loadedRegions" [loadedCategories]="loadedCategories" (setFilters)="onSetFilters($event)"></app-filters>
+    <app-filters [loadedRegions]="loadedRegions" [loadedCategories]="loadedCategories" (setFilters)="onSetFilters($event)" (clearFilters)="onClearFilters()"></app-filters>
     <div class="row">
       <div class="col-md-2">
         <p class="fw-lighter">{{ loadedCategories.length < 1 ? 'No categories': 'Categories' }}</p>
