@@ -44,12 +44,13 @@
       <p class="fw-lighter mt-3">Details</p>
       <div class="card">
         <div class="card-body">
-          <p class="fw-lighter"><i class="bi bi-geo-fill"></i> {{ product.region.name }}</p>
+          <p><span class="fw-semibold">Category: </span> <span class="fw-lighter">{{ product.category.name }}</span></p>
+          <p><span>Location: </span> <span><i class="bi bi-geo-fill"></i> {{ product.region.name }}</span></p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div *ngIf="!product">
-  <p>Loading product details...</p>
+<div class="d-flex justify-content-center align-items-center" style="height: 75vh;" *ngIf="!product">
+  <app-loading-spinner></app-loading-spinner>
 </div>

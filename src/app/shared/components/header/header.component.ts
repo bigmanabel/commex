@@ -10,7 +10,7 @@ import { EventService } from '../../services/event.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   eventSubscription!: Subscription;
-  cartLength!: number;
+  cartLength: number = 0;
 
   constructor(private cartService: CartService, private eventService: EventService) {
     this.eventSubscription = this.eventService.updateCartLength$.subscribe(() => {

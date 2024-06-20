@@ -24,6 +24,7 @@ import { RouterModule } from '@angular/router';
 import { RegionFilterComponent } from './home/main/filters/region-filter/region-filter.component';
 import { PriceFilterComponent } from './home/main/filters/price-filter/price-filter.component';
 import { CategoryFilterComponent } from './home/main/filters/category-filter/category-filter.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CategoryFilterComponent } from './home/main/filters/category-filter/cat
     RegionFilterComponent,
     PriceFilterComponent,
     CategoryFilterComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

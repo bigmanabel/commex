@@ -1,15 +1,18 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="loadedProducts.length > 0">
   <div class="container-fluid">
     <app-filters [loadedRegions]="loadedRegions" [loadedCategories]="loadedCategories" (setFilters)="onSetFilters($event)" (clearFilters)="onClearFilters()"></app-filters>
     <div class="row">
       <div class="col-md-2">
-        <p class="fw-lighter">{{ loadedCategories.length < 1 ? 'No categories': 'Categories' }}</p>
+        <p class="fw-lighter">{{ loadedProducts.length > 1 ? 'Categories' : '' }}</p>
         <app-category-list [loadedCategories]="loadedCategories"></app-category-list>
       </div>
       <div class="col-md-10">
-        <p class="fw-lighter">{{ loadedProducts.length < 1 ? 'No matching products found.': 'All Products' }}</p>
+        <p class="fw-lighter">{{ loadedProducts.length > 1 ? 'All Products': '' }}</p>
         <app-product-list [loadedProducts]="loadedProducts"></app-product-list>
       </div>
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-center align-items-center" style="height: 75vh;" *ngIf="loadedProducts.length < 1">
+  <app-loading-spinner></app-loading-spinner>
 </div>
