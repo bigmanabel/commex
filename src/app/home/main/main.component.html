@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="loadedProducts.length > 0">
+<div class="container-fluid">
   <div class="container-fluid">
     <app-filters [loadedRegions]="loadedRegions" [loadedCategories]="loadedCategories" (setFilters)="onSetFilters($event)" (clearFilters)="onClearFilters()"></app-filters>
     <div class="row">

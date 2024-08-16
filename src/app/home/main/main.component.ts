@@ -19,6 +19,10 @@ export class MainComponent {
   selectedCategory!: string;
   seletedPriceRange!: { min: string, max: string };
 
+  get isLoading(): boolean {
+    return this.loadedProducts.length === 0;
+  }
+
   onSetFilters(filters: { region: string, category: string, price: { min: string, max: string } } ) {
     this.selectedRegion = filters.region;
     this.selectedCategory = filters.category;
