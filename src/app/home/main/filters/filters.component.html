@@ -1,13 +1,121 @@
-<div class="row py-3 align-items-center">
-  <div class="col-md-9 offset-md-2 d-flex align-items-center">
-    <p class="fw-light me-3 mb-0">Filters ></p>
-    <app-price-filter (onPriceRangeSet)="selectedPriceRange = $event" [clearAllFilters]="clearAllFilters"></app-price-filter>
-    <span class="mx-3">|</span>
-    <app-region-filter [loadedRegions]="loadedRegions" (regionSelected)="selectedRegion = $event" [clearAllFilters]="clearAllFilters"></app-region-filter>
-    <span class="mx-3">|</span>
-    <app-category-filter [loadedCategories]="loadedCategories" (categorySelected)="selectedCategory = $event" [clearAllFilters]="clearAllFilters"></app-category-filter>
-    <span class="mx-3 text-body-tertiary">|</span>
-    <button class="btn border border-0" (click)="onSetFilters()" [disabled]="!isAnyFilterSet()">Apply</button>
-    <button class="btn border border-0" (click)="onClearFilters()" [disabled]="!isAnyFilterSet()">Clear All</button>
+<div class="filters-container bg-white rounded-3 shadow-sm p-4 mb-4">
+  <div class="row align-items-center">
+    <div class="col-12">
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <!-- Filter Label -->
+        <div class="filter-label">
+          <h6 class="mb-0 text-muted fw-semibold">
+            <i class="fas fa-filter me-2"></i>
+            Filters
+          </h6>
+        </div>
+
+        <!-- Price Filter -->
+        <div class="filter-item">
+          <app-price-filter
+            (onPriceRangeSet)="selectedPriceRange = $event"
+            [clearAllFilters]="clearAllFilters"
+          >
+          </app-price-filter>
+        </div>
+
+        <!-- Divider -->
+        <div class="filter-divider">
+          <span class="text-muted">|</span>
+        </div>
+
+        <!-- Region Filter -->
+        <div class="filter-item">
+          <app-region-filter
+            [loadedRegions]="loadedRegions"
+            (regionSelected)="selectedRegion = $event"
+            [clearAllFilters]="clearAllFilters"
+          >
+          </app-region-filter>
+        </div>
+
+        <!-- Divider -->
+        <div class="filter-divider">
+          <span class="text-muted">|</span>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-item">
+          <app-category-filter
+            [loadedCategories]="loadedCategories"
+            (categorySelected)="selectedCategory = $event"
+            [clearAllFilters]="clearAllFilters"
+          >
+          </app-category-filter>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="filter-actions ms-auto">
+          <div class="btn-group" role="group" aria-label="Filter actions">
+            <button
+              type="button"
+              class="btn btn-gradient btn-sm"
+              [disabled]="!isAnyFilterSet()"
+              (click)="onSetFilters()"
+              [attr.aria-label]="'Apply selected filters'"
+            >
+              <i class="fas fa-check me-1"></i>
+              Apply
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-secondary btn-sm"
+              [disabled]="!isAnyFilterSet()"
+              (click)="onClearFilters()"
+              [attr.aria-label]="'Clear all filters'"
+            >
+              <i class="fas fa-times me-1"></i>
+              Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filters Display -->
+      <div class="active-filters mt-3" *ngIf="hasActiveFilters()">
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          <span class="text-muted small">Active filters:</span>
+
+          <span
+            class="badge bg-primary rounded-pill"
+            *ngIf="selectedPriceRange"
+          >
+            Price: {{ selectedPriceRange.min | currency : "GH¢ " }} -
+            {{ selectedPriceRange.max | currency : "GH¢ " }}
+            <button
+              type="button"
+              class="btn-close btn-close-white ms-1"
+              aria-label="Remove price filter"
+              (click)="clearPriceFilter()"
+            ></button>
+          </span>
+
+          <span class="badge bg-success rounded-pill" *ngIf="selectedRegion">
+            Region: {{ selectedRegion }}
+            <button
+              type="button"
+              class="btn-close btn-close-white ms-1"
+              aria-label="Remove region filter"
+              (click)="clearRegionFilter()"
+            ></button>
+          </span>
+
+          <span class="badge bg-info rounded-pill" *ngIf="selectedCategory">
+            Category: {{ selectedCategory }}
+            <button
+              type="button"
+              class="btn-close btn-close-white ms-1"
+              aria-label="Remove category filter"
+              (click)="clearCategoryFilter()"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

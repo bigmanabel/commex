@@ -1,20 +1,116 @@
-<div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Commex. Powered by Code Breakers.</p>
+<footer class="footer mt-auto">
+  <div class="footer-content">
+    <div class="container">
+      <div class="row">
+        <!-- Brand Section -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand">
+            <h5 class="fw-bold mb-3">
+              <i class="fas fa-shopping-bag me-2 text-primary"></i>
+              Commex
+            </h5>
+            <p class="text-muted mb-3">
+              Your trusted e-commerce platform for discovering amazing products
+              from various categories and regions. Quality guaranteed with fast
+              delivery.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
-    <a href="/"
-      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <svg class="bi me-2" width="40" height="32">
-        <use xlink:href="#bootstrap" />
-      </svg>
-    </a>
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 mb-4">
+          <h6 class="fw-semibold mb-3">Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#" routerLink="/">Home</a></li>
+            <li><a href="#" routerLink="/products">Products</a></li>
+            <li><a href="#" routerLink="/categories">Categories</a></li>
+            <li><a href="#" routerLink="/about">About Us</a></li>
+            <li><a href="#" routerLink="/contact">Contact</a></li>
+          </ul>
+        </div>
 
-    <!-- <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-    </ul> -->
-  </footer>
-</div>
+        <!-- Customer Service -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h6 class="fw-semibold mb-3">Customer Service</h6>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Track Your Order</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h6 class="fw-semibold mb-3">Get in Touch</h6>
+          <div class="contact-info">
+            <div class="contact-item mb-2">
+              <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+              <span class="text-muted">123 Commerce St, Accra, Ghana</span>
+            </div>
+            <div class="contact-item mb-2">
+              <i class="fas fa-phone me-2 text-primary"></i>
+              <span class="text-muted">+233 123 456 789</span>
+            </div>
+            <div class="contact-item mb-2">
+              <i class="fas fa-envelope me-2 text-primary"></i>
+              <span class="text-muted">support&#64;commex.com</span>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="newsletter mt-3">
+            <h6 class="fw-semibold mb-2">Newsletter</h6>
+            <div class="input-group input-group-sm">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your email"
+                aria-label="Email for newsletter"
+              />
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0 text-muted small">
+            &copy; {{ currentYear }} Commex. All rights reserved. Powered by
+            <span class="text-primary fw-semibold">Code Breakers</span>.
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="footer-legal">
+            <a href="#" class="text-muted small me-3">Privacy Policy</a>
+            <a href="#" class="text-muted small me-3">Terms of Service</a>
+            <a href="#" class="text-muted small">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

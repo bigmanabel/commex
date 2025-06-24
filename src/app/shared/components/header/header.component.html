@@ -1,26 +1,72 @@
-<nav class="navbar navbar-expand-lg bg-dark">
+<nav
+  class="navbar navbar-expand-lg navbar-dark shadow-sm"
+  style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+>
   <div class="container">
-    <a class="navbar-brand text-white" routerLink="">Commex</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a
+      class="navbar-brand fw-bold fs-3 text-white transition-all"
+      routerLink=""
+      style="font-family: 'Inter', sans-serif; letter-spacing: -0.5px"
+    >
+      <i class="fas fa-shopping-bag me-2"></i>
+      Commex
+    </a>
+
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active text-white position-relative" aria-current="page" routerLink="cart"><i
-              class="bi bi-bag fs-4"></i><span
-              class="position-absolute -top-50 start-80 translate-middle badge rounded-pill bg-secondary" (updateCart)="updateCartLength()">{{cartLength}}</span></a>
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item me-3">
+          <form class="d-flex" role="search">
+            <div class="input-group">
+              <input
+                class="form-control border-0 bg-white bg-opacity-20 text-white placeholder-white"
+                type="search"
+                placeholder="Search products..."
+                aria-label="Search"
+                style="backdrop-filter: blur(10px)"
+              />
+              <button
+                class="btn btn-outline-light border-0"
+                type="submit"
+                aria-label="Search"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a
+            class="nav-link text-white position-relative transition-all p-3 rounded-circle"
+            routerLink="cart"
+            aria-label="Shopping cart"
+            style="
+              background: rgba(255, 255, 255, 0.1);
+              backdrop-filter: blur(10px);
+            "
+          >
+            <i class="fas fa-shopping-cart fs-5"></i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size: 0.7rem"
+              [attr.aria-label]="'Cart has ' + cartLength + ' items'"
+            >
+              {{ cartLength }}
+            </span>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
     </div>
   </div>

@@ -1,0 +1,29 @@
+.app-container {
+  background-color: #f8fafc;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth page transitions */
+router-outlet + * {
+  animation: routeAnimation 0.3s ease-in-out;
+}
+
+@keyframes routeAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure proper layout flow */
+.min-vh-100 {
+  min-height: 100vh;
+}

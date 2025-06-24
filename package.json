@@ -3,10 +3,20 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
+    "start:prod": "ng serve --configuration production",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:watch": "ng test --watch",
+    "test:coverage": "ng test --code-coverage",
+    "e2e": "ng e2e",
+    "lint": "ng lint",
+    "analyze": "npm run build:prod && npx webpack-bundle-analyzer dist/commex/stats.json",
+    "serve:prod": "npm run build:prod && npx http-server dist/commex -p 4200",
+    "format": "prettier --write \"src/**/*.{ts,html,css,scss,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,css,scss,json}\""
   },
   "private": true,
   "dependencies": {
